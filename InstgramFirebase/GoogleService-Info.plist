@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>353156339800-ligcocgssbb6slsagv7vff8hgenq3an7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.353156339800-ligcocgssbb6slsagv7vff8hgenq3an7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAUp2RTcQSu18jYtBL6vGhKcBzfojXDiTo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>353156339800</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ahmad.eisa.InstgramFirebase</string>
+	<key>PROJECT_ID</key>
+	<string>instgramfirebase-dc3a5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>instgramfirebase-dc3a5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:353156339800:ios:fc48dd233516a7251d522d</string>
+	<key>DATABASE_URL</key>
+	<string>https://instgramfirebase-dc3a5.firebaseio.com</string>
+</dict>
+</plist>
