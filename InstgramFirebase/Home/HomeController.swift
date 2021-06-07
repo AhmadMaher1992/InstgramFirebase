@@ -210,7 +210,7 @@ extension HomeController: HomePostCellDelegate {
         var post = posts[indexPath.item]
         guard let postId = post.id else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let values = [uid : post.hasLiked == true ? 0 : 1]
+        let values = [uid : post.hasLiked == true ? 0 : 1]//one mean like post
         Database.database().reference().child("likes").child(postId).updateChildValues(values) { (error, refernce) in
             if let error = error {
                 print("DEBUG: Failed To Like Post\(error)")

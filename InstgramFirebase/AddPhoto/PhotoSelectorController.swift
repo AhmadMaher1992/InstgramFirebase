@@ -14,6 +14,7 @@ class PhotoSelectorController: UICollectionViewController {
     
     let cellID = "cellID"
     let headerID = "headerID"
+    
     var images = [UIImage]()
     var selectedImage: UIImage?
     var assests = [PHAsset]()
@@ -168,6 +169,7 @@ extension PhotoSelectorController: UICollectionViewDelegateFlowLayout {
     //you must give header size to render
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width = view.frame.width
+     
         return CGSize(width: width, height: width)
     }
     

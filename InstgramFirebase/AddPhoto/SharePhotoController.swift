@@ -105,6 +105,7 @@ class SharePhotoController: UIViewController {
     
     
     fileprivate func saveToDataBaseWithImageUrl(imageUrl: String){
+        
         guard let caption = textView.text else { return }
         guard let postImage = selectedImage else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }

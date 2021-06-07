@@ -9,7 +9,14 @@
 import UIKit
 import Firebase
 
+protocol UserProfileHeaderDelegate {
+    func onChangeToListView()
+    func onChangeToGridView()
+}
+
 class UserProfileHeader: UICollectionViewCell {
+    
+    var delegate: UserProfileHeaderDelegate?
     
     var user: User?{
         didSet{
@@ -48,7 +55,7 @@ class UserProfileHeader: UICollectionViewCell {
         
     }
     
-  
+    
     lazy var editFollowProfileButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Edit Profile", for: .normal)
@@ -67,14 +74,14 @@ class UserProfileHeader: UICollectionViewCell {
         
         guard let userID = user?.uid else { return }
         if editFollowProfileButton.titleLabel?.text == "unfollow" {
-           Database.database().reference().child("following").child(currentLoggedinUserID).child(userID).removeValue { (error, reference) in
+            Database.database().reference().child("following").child(currentLoggedinUserID).child(userID).removeValue { (error, reference) in
                 if let error = error {
                     print("Failed To Unfollow 😢 \(error)")
                     return
                 }
                 print("Success Remove Follow")
-            self.setupFollowStyle()
-         
+                self.setupFollowStyle()
+                
             }
             
         }else{
@@ -117,17 +124,37 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    let gridbutton: UIButton = {
+    lazy var gridbutton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
+        btn.addTarget(self, action: #selector(handleChangeToGridView), for: .touchUpInside)
         return btn
     }()
-    let listButton: UIButton = {
+    @objc
+    func handleChangeToGridView() {
+        print("DEBUG: Change to Grid View")
+        gridbutton.tintColor = AppColors.mainBlue
+        listButton.tintColor = UIColor(white: 0, alpha: 0.2)
+        delegate?.onChangeToGridView()
+    }
+    
+    lazy var  listButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(#imageLiteral(resourceName: "list"), for: .normal)
+        btn.addTarget(self, action: #selector(handleChangeToListView), for: .touchUpInside)
         btn.tintColor = UIColor(white: 0, alpha: 0.2)
         return btn
     }()
+    
+    
+    @objc
+    func handleChangeToListView(){
+        print("DEBUG: Change to List View")
+        listButton.tintColor = AppColors.mainBlue
+        gridbutton.tintColor = UIColor(white: 0, alpha: 0.2)
+        delegate?.onChangeToListView()
+    }
+    
     let bookmarkButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
@@ -163,7 +190,7 @@ class UserProfileHeader: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-  
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
